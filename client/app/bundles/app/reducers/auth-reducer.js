@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../constants/user-log-cons';
+import { LOGIN, LOGOUT } from '../constants/user-auth-cons';
 
 export const authReducer = (state = {}, action) => {
     switch (action.type) {

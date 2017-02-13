@@ -3,6 +3,7 @@ import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import LoginContainer from '../containers/user-auth-container';
 import ProductsContainer from '../containers/products-container';
+import CartContainer from '../containers/cart-container';
 import HelloWorldContainer from '../containers/HelloWorldContainer';
 import firebase from '../firebase/firebase';
 
@@ -27,6 +28,7 @@ export default (
     <Route path="/">
       <IndexRoute component={ LoginContainer } onEnter={ redirectIfLoggedIn }/>
       <Route path="products" component={ ProductsContainer } onEnter={ requireLogin }/>
+      <Route path="cart" component={ CartContainer } onEnter={ requireLogin }/>
       <Route path="hello" component={ HelloWorldContainer } onEnter={ requireLogin }/>
     </Route>
   </Router>

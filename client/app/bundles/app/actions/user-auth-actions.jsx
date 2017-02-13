@@ -1,4 +1,4 @@
-import { LOGIN, LOGOUT } from '../constants/user-log-cons';
+import { LOGIN, LOGOUT } from '../constants/user-auth-cons';
 
 import firebase, { firebaseRef, githubProvider } from '../firebase/firebase';
 

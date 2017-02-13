@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 import { startLogout } from '../actions/user-auth-actions';
 import { startGetProducts } from '../actions/products-actions';
+import { startAddCartProducts } from '../actions/cart-actions';
 import Products from '../components/products';
 
 class ProductsContainer extends Component {
@@ -10,6 +12,7 @@ class ProductsContainer extends Component {
         super();
         this.onLogout = this.onLogout.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.onAddToCart = this.onAddToCart.bind(this);
     }
 
     componentDidMount() {
@@ -25,24 +28,17 @@ class ProductsContainer extends Component {
     }
 
     onSubmit(event) {
-      event.preventDefault();
-    //   var p = {
-    //       name: 'test', 
-    //       brand: 'test', 
-    //       model: 'test', 
-    //       sku: 'test', 
-    //       price: 2, 
-    //       desc: 'test'
-    //   };
-    //   $.post('/products', { product: p }, (data) => {
-    //       console.log('success', data);
-    //   }, 'JSON');
+        event.preventDefault();
 
-    //   $.get('/products', {}, (data) => {
-    //       console.log('success', data);
-    //   }, 'JSON');
         const { dispatch } = this.props;
         dispatch(startGetProducts());
+    }
+
+    onAddToCart(event, product_id) {
+        event.preventDefault();
+
+        const { dispatch } = this.props;
+        dispatch(startAddCartProducts(product_id));
     }
 
     render() {
@@ -51,7 +47,8 @@ class ProductsContainer extends Component {
         return (
             <div>
                 <button onClick={ this.onSubmit }>submit</button>
-                <Products handleOnLogout={ this.onLogout } products={ products }/>
+                <Link to="/cart">Cart</Link>
+                <Products products={ products } handleOnLogout={ this.onLogout } handleOnAddToCart={ this.onAddToCart }/>
             </div>
         );
     }
