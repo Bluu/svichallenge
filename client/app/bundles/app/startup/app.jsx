@@ -4,8 +4,7 @@ import { hashHistory } from 'react-router';
 
 import firebase from '../firebase/firebase';
 import { login, logout } from '../actions/user-auth-actions';
-import configureStore from '../store/helloWorldStore';
-//import LoginContainer from '../containers/user-auth-container';
+import configureStore from '../store/store';
 import Router from '../router/routes';
 
 let dispatch;
@@ -22,7 +21,6 @@ function authCheck () {
   });
 }
 
-
 // See documentation for https://github.com/reactjs/react-redux.
 // This is how you get props from the Rails view into the redux store.
 // This code here binds your smart component to the redux store.
@@ -35,7 +33,7 @@ const App = (props, _railsContext) => {
 
   return (
     <Provider store={ store }>
-      { Router }
+        { Router }
     </Provider>
   );
 }

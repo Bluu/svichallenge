@@ -4,8 +4,7 @@ const Login = ({ handleOnLogin }) => {
   return (
     <div>
         <h1>Svitla Challenge App</h1>
-        <h3>Login</h3>
-        <button onClick={ handleOnLogin }>Login</button>
+        <button className="btn btn-primary" onClick={ handleOnLogin }>Login with Github</button>
     </div>
   )
 };

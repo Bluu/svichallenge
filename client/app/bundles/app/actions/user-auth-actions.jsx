@@ -1,6 +1,6 @@
 import { LOGIN, LOGOUT } from '../constants/user-auth-cons';
 
-import firebase, { firebaseRef, githubProvider } from '../firebase/firebase';
+import firebase, { githubProvider } from '../firebase/firebase';
 
 export const login = (uid) => {
     return {

@@ -4,23 +4,36 @@ const Cart = ({ products, cartProducts, handleOnDelete }) => {
     return (
         <div>
             <h1>Cart</h1>
-            <ul>
-                {   
-                    cartProducts ? cartProducts.map(cartProduct => {
-                        var product = products? products.find(product => product.id === cartProduct.product_id) : {};
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Model</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    {   
+                        cartProducts ? cartProducts.map(cartProduct => {
+                            var product = products? products.find(product => product.id === cartProduct.product_id) : {};
 
-                        return (
-                            <li key={ cartProduct.id }>
-                                <p>{ product.name }</p>
-                                <p>{ product.brand }</p>
-                                <p>{ product.model }</p>
-                                <p>{ product.price }</p>
-                                <button onClick={ (event) => handleOnDelete(event, cartProduct.id) }>Delete</button>
-                            </li>
-                        );
-                    }) : ''
-                }
-            </ul>
+                            return (
+                                <tr key={ cartProduct.id }>
+                                    <td>{ product.name }</td>
+                                    <td>{ product.brand }</td>
+                                    <td>{ product.model }</td>
+                                    <td>{ product.price }</td>
+                                    <td><button className="btn btn-danger" onClick={ (event) => handleOnDelete(event, cartProduct.id) }>Delete</button></td>
+                                </tr>
+                            );
+                        }) : ''
+                    }
+                </tbody>
+            </table>
+                
         </div>
     );
 };
